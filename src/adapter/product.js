@@ -22,7 +22,7 @@ const post = async (body) => {
     }
 
     const newProduct = new Product({        
-        _id: uuid.v4(),
+        id: uuid.v4(),
         name,
         brand,
         model,
@@ -34,12 +34,12 @@ const post = async (body) => {
 }
 
 const del = async (id) => {
-    await Product.deleteOne({ _id: id});
+    await Product.deleteOne({ id: id});
     return { message: 'Product has been successfully deleted!' }
 }
 
 const put = async (id, body) => {
-    await Product.findOneAndUpdate({ _id: id }, body);
+    await Product.findOneAndUpdate({ id: id }, body);
     return { message: 'Product has been successfully updated!' };
 }
 
