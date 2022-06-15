@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost/products', {useNewUrlParser: true})
+mongoose.connect('mongodb://0.0.0.0:27017/products', {useNewUrlParser: true})
 mongoose.Promise = global.Promise
 
 const db = mongoose.connection

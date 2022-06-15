@@ -1,7 +1,8 @@
 const adapter = require('../adapter/product');
 
 const get = async (req, res) => {
-    const result = await adapter.get();
+    const { id } = req.params
+    const result = await adapter.get(id);
     return res.json(result);
 }
 

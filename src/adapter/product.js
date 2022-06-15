@@ -1,7 +1,10 @@
 const Product = require('../model/product');
 const uuid = require('uuid');
 
-const get = async () => {
+const get = async (id) => {
+    if (id) {
+        return Product.findById(id);
+    }
     return Product.find();
 }
 
@@ -22,7 +25,7 @@ const post = async (body) => {
     }
 
     const newProduct = new Product({        
-        id: uuid.v4(),
+        _id: uuid.v4(),
         name,
         brand,
         model,
@@ -34,12 +37,12 @@ const post = async (body) => {
 }
 
 const del = async (id) => {
-    await Product.deleteOne({ id: id});
+    await Product.deleteOne({ _id: id});
     return { message: 'Product has been successfully deleted!' }
 }
 
 const put = async (id, body) => {
-    await Product.findOneAndUpdate({ id: id }, body);
+    await Product.findOneAndUpdate({ _id: id }, body);
     return { message: 'Product has been successfully updated!' };
 }
 
